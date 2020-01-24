@@ -3,11 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MediaPickerPoject.iml" filepath="$PROJECT_DIR$/MediaPickerPoject.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MediaPickerPoject.iml" filepath="$PROJECT_DIR$/MediaPickerPoject.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/MediaPickerPoject-app.iml" filepath="$PROJECT_DIR$/app/MediaPickerPoject-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mediapicker/MediaPickerPoject-mediapicker.iml" filepath="$PROJECT_DIR$/mediapicker/MediaPickerPoject-mediapicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediapicker/mediapicker.iml" filepath="$PROJECT_DIR$/mediapicker/mediapicker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mediapicker/mediapicker.iml" filepath="$PROJECT_DIR$/mediapicker/mediapicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugins-MediaPickerPoject.iml" filepath="$PROJECT_DIR$/plugins-MediaPickerPoject.iml" />
     </modules>
   </component>
 </project>

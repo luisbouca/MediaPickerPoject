@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 import com.dmcbig.mediapicker.adapter.FolderAdapter;
 import com.dmcbig.mediapicker.adapter.MediaGridAdapter;
 import com.dmcbig.mediapicker.adapter.SpacingDecoration;
@@ -193,7 +193,8 @@ public class PickerActivity extends Activity implements DataCallback, View.OnCli
 
     @Override
     protected void onDestroy() {
-        Glide.get(this).clearMemory();
+        Picasso.get().cache.clear();
+        //Glide.get(this).clearMemory();
         super.onDestroy();
     }
 

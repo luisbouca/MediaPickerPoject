@@ -14,13 +14,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 import com.dmcbig.mediapicker.PickerConfig;
 import com.dmcbig.mediapicker.R;
 import com.dmcbig.mediapicker.entity.Media;
 import com.dmcbig.mediapicker.utils.FileUtils;
 import com.dmcbig.mediapicker.utils.ScreenUtils;
 
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 /**
@@ -80,10 +83,14 @@ public class MediaGridAdapter extends RecyclerView.Adapter<MediaGridAdapter.MyVi
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final Media media = medias.get(position);
         Uri mediaUri = Uri.parse("file://" + media.path);
-
-        Glide.with(context)
-                .load(mediaUri)
-                .into(holder.media_image);
+        try {
+            File mediaFile = new File(new URI("file://" + media.path));
+            Picasso.with(context)
+                    .load(mediaFile)
+                    .into(holder.media_image);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
 
         if (media.mediaType == 3) {
             holder.gif_info.setVisibility(View.INVISIBLE);

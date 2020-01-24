@@ -15,12 +15,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 import com.dmcbig.mediapicker.PreviewActivity;
 import com.dmcbig.mediapicker.R;
 import com.dmcbig.mediapicker.entity.Media;
 
 import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import uk.co.senab.photoview.PhotoView;
@@ -69,9 +71,14 @@ public class PreviewFragment extends Fragment {
             }
         });
         setPlayView(media);
-        Glide.with(getActivity())
-                .load(media.path)
-                .into(mPhotoView);
+        try {
+            File mediaFile = new File(new URI("file://" + media.path));
+            Picasso.with(getActivity())
+                    .load(mediaFile)
+                    .into(mPhotoView);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
     void setPlayView(final Media media) {

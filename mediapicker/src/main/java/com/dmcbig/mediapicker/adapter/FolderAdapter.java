@@ -10,11 +10,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 import com.dmcbig.mediapicker.R;
 import com.dmcbig.mediapicker.entity.Folder;
 import com.dmcbig.mediapicker.entity.Media;
 
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 /**
@@ -67,9 +70,17 @@ public class FolderAdapter extends BaseAdapter {
         Media media;
         if (folder.getMedias().size() > 0) {
             media = folder.getMedias().get(0);
-            Glide.with(mContext)
-                    .load(Uri.parse("file://" + media.path))
-                    .into(holder.cover);
+
+            try {
+                File mediaFile = new File(new URI("file://" + media.path));
+                Picasso.with(mContext)
+                        .load(mediaFile)
+                        .into(holder.cover);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+
+
         } else {
             holder.cover.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.default_image));
         }
